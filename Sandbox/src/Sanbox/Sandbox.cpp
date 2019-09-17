@@ -1,5 +1,7 @@
 #include "Sandbox/Sandbox.h"
 
+#include <imgui.h>
+
 // --------------- Example Layer -----------------
 
 SandboxLayer::SandboxLayer()
@@ -8,12 +10,19 @@ SandboxLayer::SandboxLayer()
 
 void SandboxLayer::onUpdate()
 {
-
 }
 
 void SandboxLayer::onEvent(Epoch::Event& e)
 {
-	EGE_CLIENT_TRACE(e);
+	if (Epoch::Input::isKeyPressed(EGE_KEY_A))
+		EGE_CORE_INFO("Key A is pressed");
+}
+
+void SandboxLayer::onImGuiRender()
+{
+	ImGui::Begin("Text");
+	ImGui::Text("Hello, World");
+	ImGui::End();
 }
 
 // --------------- Example Game -----------------

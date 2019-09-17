@@ -13,10 +13,12 @@ IncludeDirs["spdlog"]	= "Epoch/lib/spdlog/include"
 IncludeDirs["glm"]		= "Epoch/lib/glm"
 IncludeDirs["GLFW"]		= "Epoch/lib/GLFW/include"
 IncludeDirs["Glad"]		= "Epoch/lib/Glad/include"
+IncludeDirs["ImGui"]	= "Epoch/lib/imgui"
 
 group "Libraries"
 	include "Epoch/lib/GLFW"
 	include "Epoch/lib/Glad"
+	include "Epoch/lib/imgui"
 
 group ""
 
@@ -54,13 +56,15 @@ project "Epoch"
 		"%{IncludeDirs.spdlog}",
 		"%{IncludeDirs.glm}",
 		"%{IncludeDirs.GLFW}",
-		"%{IncludeDirs.Glad}"
+		"%{IncludeDirs.Glad}",
+		"%{IncludeDirs.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -111,7 +115,8 @@ project "Sandbox"
 		"Epoch/include",
 	
 		"%{IncludeDirs.spdlog}",
-		"%{IncludeDirs.glm}"
+		"%{IncludeDirs.glm}",
+		"%{IncludeDirs.ImGui}"
 	}
 
 	links

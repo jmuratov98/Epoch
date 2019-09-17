@@ -12,7 +12,7 @@ Do note: use `--recursive` command in order to clone all of EGE's dependenices
 After cloning the repository go to the folders and click `GenEpcohProj.bat` in order to generate the visual studio solution
 
 ## The Plan ##
-The plan for EGE is simple using the tutorials from [TheCherno](thecherno.com/engine), and [Javidx9](https://www.youtube.com/channel/UC-yuWVUplUJZvieEligKBkA) create a simple and fast graphics engine.
+The plan for EGE is simple using the tutorials from [TheCherno](https://thecherno.com/engine), and [Javidx9](https://www.youtube.com/channel/UC-yuWVUplUJZvieEligKBkA) create a simple and fast graphics engine.
 
 ### Main Features to Come ###
 - GUI
@@ -31,10 +31,12 @@ The plan for EGE is simple using the tutorials from [TheCherno](thecherno.com/en
 - glm [web](https://glm.g-truc.net/0.9.9/index.html) [code](https://github.com/g-truc/glm): Fast math library
 - GLFW [web](https://www.glfw.org) [code](https://github.com/glfw/glfw): For getting OpenGL 1.0 functions
 - Glad [web](https://glad.dav1d.de) [code](https://github.com/Dav1dde/glad): For getting later OpenGL functions
+- [Dear ImGui](https://github.com/ocornut/imgui): Immediate mode GUI for C++
 
 ## Changelog ##
 The latest changes:
 
-- Added a basic window and a event system
+- Added ImGui
+- Polling
 
 Complete list of changes here -> [Changelog](docs/Changelog.md)

@@ -15,6 +15,7 @@ namespace Epoch {
 		virtual void onDetach() { }
 		virtual void onUpdate() { }
 		virtual void onEvent(Event& e) { }
+		virtual void onImGuiRender() { }
 
 		inline const std::string& getName() const { return m_Name; }
 

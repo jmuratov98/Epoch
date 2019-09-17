@@ -7,3 +7,6 @@
 [submodule "Epoch\\lib\\GLFW"]
 	path = Epoch\\lib\\GLFW
 	url = https://github.com/jmuratov98/glfw.git
+[submodule "Epoch\\lib\\imgui"]
+	path = Epoch\\lib\\imgui
+	url = https://github.com/jmuratov98/imgui.git

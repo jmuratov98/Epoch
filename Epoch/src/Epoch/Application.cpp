@@ -19,6 +19,9 @@ namespace Epoch {
 
 		m_Window = std::unique_ptr<Window>(Window::create());
 		m_Window->setEventCallback(EGE_BIND_EVENT_FN(Application::onEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		pushOverLay(m_ImGuiLayer);
 	}
 
 	void Application::run()
@@ -30,6 +33,11 @@ namespace Epoch {
 
 			for (Layer* layer : m_LayerStack)
 				layer->onUpdate();
+
+			m_ImGuiLayer->begin();
+			for (Layer* layer : m_LayerStack)
+				layer->onImGuiRender();
+			m_ImGuiLayer->end();
 
 			m_Window->onUpdate();
 		}
