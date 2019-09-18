@@ -1,8 +1,8 @@
 # Binaries
-**/bin/
+bin/
 bin-obj/
 bin-int/
-!lib/bin/premake5/
+!lib/bin/
 
 # Visual Studio
 .vs/
