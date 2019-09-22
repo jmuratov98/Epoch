@@ -7,6 +7,8 @@
 #include "Epoch/Graphics/Layers/LayerStack.h"
 #include "Epoch/Graphics/Layers/ImGuiLayer.h"
 
+#include "Epoch/Core/Timestep.h"
+
 #include "Epoch/Events/Event.h"
 #include "Epoch/Events/ApplicationEvents.h"
 
@@ -32,12 +34,13 @@ namespace Epoch {
 
 	private:
 		bool m_IsRunning = true;
+		float m_LastFrameTime = 0.0f;
 
 		LayerStack m_LayerStack;
 
 		ImGuiLayer* m_ImGuiLayer;
 		std::unique_ptr<Window> m_Window;
-	
+
 	private:
 		static Application* cm_Singleton;
 	};

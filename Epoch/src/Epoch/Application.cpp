@@ -1,10 +1,12 @@
 #include "pch.h"
 #include "Epoch/Application.h"
 
+#include "Epoch/Graphics/Renderer.h"
+
 #include "Epoch/Engine.h"
 
 // Temporary
-#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 namespace Epoch {
 
@@ -20,6 +22,8 @@ namespace Epoch {
 		m_Window = std::unique_ptr<Window>(Window::create());
 		m_Window->setEventCallback(EGE_BIND_EVENT_FN(Application::onEvent));
 
+		Renderer::init();
+
 		m_ImGuiLayer = new ImGuiLayer();
 		pushOverLay(m_ImGuiLayer);
 	}
@@ -28,17 +32,18 @@ namespace Epoch {
 	{
 		while (m_IsRunning)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack)
-				layer->onUpdate();
+				layer->onUpdate(timestep);
 
 			m_ImGuiLayer->begin();
 			for (Layer* layer : m_LayerStack)
 				layer->onImGuiRender();
 			m_ImGuiLayer->end();
-
+			
 			m_Window->onUpdate();
 		}
 	}

@@ -2,6 +2,8 @@
 
 #include "Epoch/Window.h"
 
+#include "Epoch/Graphics/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Epoch {
@@ -31,6 +33,7 @@ namespace Epoch {
 
 	private: // Private Member Variables
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 	private:
 		struct WindowsData

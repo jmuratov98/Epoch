@@ -5,7 +5,7 @@
 #include "Epoch/Events/MouseEvents.h"
 #include "Epoch/Events/KeyEvents.h"
 
-#include <glad/glad.h>
+#include "Epoch/Platform/OpenGL/OpenGLGraphicsContext.h"
 
 namespace Epoch {
 
@@ -49,10 +49,9 @@ namespace Epoch {
 
 		m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), nullptr, nullptr);
 
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		EGE_CORE_ASSERT(status, "Failed to initialize Glad");
-
+		m_Context = new OpenGLGraphicsContext(m_Window);
+		m_Context->init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		setVSync(true);
 
@@ -137,7 +136,7 @@ namespace Epoch {
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double x, double y)
 		{
 			WindowsData& data = *(WindowsData*)glfwGetWindowUserPointer(window);
-			MouseScrolledEvent e((float)x, (float)y);
+			MouseMovedEvent e((float)x, (float)y);
 			data.EventCallback(e);
 		});
 	}
@@ -150,7 +149,7 @@ namespace Epoch {
 	void WindowsWindow::onUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->swapBuffers();
 	}
 
 	void WindowsWindow::setVSync(bool enabled)

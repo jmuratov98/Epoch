@@ -50,15 +50,15 @@ namespace Epoch {
 	class EGE_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(float x, float y) : m_X(x), m_Y(y) { }
+		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffSet(xOffset), m_YOffSet(yOffset) { }
 
-		inline float getXScrolled() const { return m_X; }
-		inline float getYScrolled() const { return m_Y; }
+		inline float getXScrolled() const { return m_XOffSet; }
+		inline float getYScrolled() const { return m_YOffSet; }
 
 		std::string toString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseScrolledEvent: (" << m_X << ", " << m_Y << " )";
+			ss << "MouseScrolledEvent: (" << m_XOffSet << ", " << m_YOffSet << " )";
 			return ss.str();
 		}
 
@@ -66,21 +66,21 @@ namespace Epoch {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
-		float m_X, m_Y;
+		float m_XOffSet, m_YOffSet;
 	};
 
 	class EGE_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(float x, float y) : m_X(x), m_Y(y) { }
+		MouseMovedEvent(float x, float y) : m_MouseX(x), m_MouseY(y) { }
 
-		inline float getXScrolled() const { return m_X; }
-		inline float getYScrolled() const { return m_Y; }
+		inline float getXPos() const { return m_MouseX; }
+		inline float getYPos() const { return m_MouseY; }
 
 		std::string toString() const override
 		{
 			std::stringstream ss;
-			ss << "MouseMovedEvent: (" << m_X << ", " << m_Y << " )";
+			ss << "MouseMovedEvent: (" << m_MouseX << ", " << m_MouseY << " )";
 			return ss.str();
 		}
 
@@ -88,7 +88,7 @@ namespace Epoch {
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
-		float m_X, m_Y;
+		float m_MouseX, m_MouseY;
 	};
 
 }
