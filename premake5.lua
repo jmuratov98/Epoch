@@ -14,6 +14,7 @@ IncludeDirs["glm"]		= "Epoch/lib/glm"
 IncludeDirs["GLFW"]		= "Epoch/lib/GLFW/include"
 IncludeDirs["Glad"]		= "Epoch/lib/Glad/include"
 IncludeDirs["ImGui"]	= "Epoch/lib/imgui"
+IncludeDirs["stb"]		= "Epoch/lib/stb/include"
 
 group "Libraries"
 	include "Epoch/lib/GLFW"
@@ -57,7 +58,8 @@ project "Epoch"
 		"%{IncludeDirs.glm}",
 		"%{IncludeDirs.GLFW}",
 		"%{IncludeDirs.Glad}",
-		"%{IncludeDirs.ImGui}"
+		"%{IncludeDirs.ImGui}",
+		"%{IncludeDirs.stb}"
 	}
 
 	links

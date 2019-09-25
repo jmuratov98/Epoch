@@ -12,8 +12,8 @@ namespace Epoch {
 
 		virtual const std::string& getName() const = 0;
 
-		static Shader* create(const std::string& filepath);
-		static Shader* create(const std::string& vertexSrc, const std::string& fragmentSrc);;
+		static Ref<Shader> create(const std::string& filepath);
+		static Ref<Shader> create(const std::string& vertexSrc, const std::string& fragmentSrc);;
 	};
 
 }

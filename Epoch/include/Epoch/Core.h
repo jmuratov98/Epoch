@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #if defined(EGE_PLATFORM_WINDOWS) && defined(EGE_DYNAMIC_LINKING)
 	#ifdef EGE_DLL
 		#define EGE_API __declspec(dllexport)
@@ -29,3 +31,13 @@
 #define VERSION_REVISION	"0"
 #define VERSION_BUILD		"1"
 #define VERSION				(VERSION_MAJOR "." VERSION_MINOR "." VERSION_REVISION "." VERSION_BUILD)
+
+namespace Epoch {
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+}

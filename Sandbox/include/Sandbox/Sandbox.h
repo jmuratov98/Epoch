@@ -12,8 +12,12 @@ public:
 	virtual void onImGuiRender() override;
 
 private:
-	std::shared_ptr<Epoch::Shader> m_FlatColorShader;
-	std::shared_ptr<Epoch::VertexArray> m_BlueSquareVAO;
+	Epoch::Ref<Epoch::Shader> m_FlatColorShader;
+	Epoch::Ref<Epoch::Shader> m_TextureShader;
+	Epoch::Ref<Epoch::VertexArray> m_FlatSquareVAO;
+	Epoch::Ref<Epoch::Texture2D> m_CheckerboardTexture;
+
+	glm::vec3 m_SquareColor = { 0.2, 0.3, 0.8 };
 
 	Epoch::OrthographicCameraController m_CameraController;
 };

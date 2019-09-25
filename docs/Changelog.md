@@ -20,9 +20,14 @@ Note: I am a college student this is a passion project which i do in my spare ti
 - Graphics Context
 - First Triangle
 
-### 9/22/19
+### 9/22/19 ###
 - Shader
 - Camera and Camera Controller
 - Renderer
 - Vertex Array, Vertex Buffer, and Index Buffer
 - Error Fixing
+
+### 9/22/19 ###
+- Textures
+- Logo
+- CameraController Class

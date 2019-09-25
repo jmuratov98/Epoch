@@ -7,23 +7,23 @@
 
 namespace Epoch {
 
-	Epoch::Shader* Shader::create(const std::string& filepath)
+	Ref<Shader> Shader::create(const std::string& filepath)
 	{
 		switch (Renderer::getAPI())
 		{
 		case RendererAPI::API::None:		EGE_CORE_ASSERT(false, "None is not yet supported"); return nullptr;
-		case RendererAPI::API::OpenGL:		return new OpenGLShader(filepath);
+		case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(filepath);
 		default:							EGE_CORE_ASSERT(false, "Unknown Render API"); return nullptr;
 		}
 
 	}
 
-	Epoch::Shader* Shader::create(const std::string& vertexSrc, const std::string& fragmentSrc)
+	Ref<Shader> Shader::create(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		switch (Renderer::getAPI())
 		{
 		case RendererAPI::API::None:		EGE_CORE_ASSERT(false, "None is not yet supported"); return nullptr;
-		case RendererAPI::API::OpenGL:		return new OpenGLShader(vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:		return std::make_shared<OpenGLShader>(vertexSrc, fragmentSrc);
 		default:							EGE_CORE_ASSERT(false, "Unknown Render API"); return nullptr;
 		}
 

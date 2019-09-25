@@ -1,5 +1,7 @@
 # Epoch Graphics Engnie (EGE)  Version 0.0.0.1 #
 
+![Epoch](/lib/logos/BlackOnWhiteLogo.png?raw=true "Epoch")
+
 ## Getting Started ##
 _Epoch Graphics Engine_ is in the earliest stages of development so please note that EGE is untested for other platforms. In order to get started with EGE, Microsoft Visual Studio 17 or 19 is recommended.
 
@@ -32,16 +34,13 @@ The plan for EGE is simple using the tutorials from [TheCherno](https://thechern
 - GLFW [web](https://www.glfw.org) [code](https://github.com/glfw/glfw): For getting OpenGL 1.0 functions
 - Glad [web](https://glad.dav1d.de) [code](https://github.com/Dav1dde/glad): For getting later OpenGL functions
 - [Dear ImGui](https://github.com/ocornut/imgui): Immediate mode GUI for C++
+- [stb_image](https://gitbub.com/nothings/stb): Image Loader
 
 ## Changelog ##
 The latest changes:
 
-- Timesteps
-- Graphics Context
-- Shaders
-- Error Fixing
-- Camera and Camera Controller
-- Renderer
-- Vertex Array, Vertex Buffer, and Index Buffer
+- Textures
+- Logo
+- CameraController Class
 
 Complete list of changes here -> [Changelog](docs/Changelog.md)

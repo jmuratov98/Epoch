@@ -63,7 +63,7 @@ namespace Epoch {
 		virtual const BufferLayout& getBufferLayout() = 0;
 		virtual void setBufferLayout(const BufferLayout& layout) = 0;
 
-		static VertexBuffer* create(float* vertices, uint32_t size);
+		static Ref<VertexBuffer> create(float* vertices, uint32_t size);
 	};
 
 	// --------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ namespace Epoch {
 
 		virtual uint32_t getCount() const = 0;
 
-		static IndexBuffer* create(uint32_t* indices, uint32_t count);
+		static Ref<IndexBuffer> create(uint32_t* indices, uint32_t count);
 	};
 
 }
