@@ -11,6 +11,11 @@ namespace Epoch {
 	{
 		RendererCommand::init();
 	}
+
+	void Renderer::onWindowResized(uint32_t width, uint32_t height)
+	{
+		RendererCommand::setViewPort(0, 0, width, height);
+	}
 	
 	void Renderer::beginScene(OrthographicCamera& camera)
 	{

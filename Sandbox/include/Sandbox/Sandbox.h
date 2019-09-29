@@ -12,8 +12,8 @@ public:
 	virtual void onImGuiRender() override;
 
 private:
+	Epoch::ShaderLibrary m_ShaderLibrary;
 	Epoch::Ref<Epoch::Shader> m_FlatColorShader;
-	Epoch::Ref<Epoch::Shader> m_TextureShader;
 	Epoch::Ref<Epoch::VertexArray> m_FlatSquareVAO;
 	Epoch::Ref<Epoch::Texture2D> m_CheckerboardTexture;
 

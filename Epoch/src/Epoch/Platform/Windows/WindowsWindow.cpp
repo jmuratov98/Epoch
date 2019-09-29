@@ -36,26 +36,28 @@ namespace Epoch {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 		m_Data.Title = props.Title;
-
-		EGE_CORE_INFO("Creating window {0}, ({1}, {2})", props.Title, props.Width, props.Height);
+		m_Data.VSync = props.VSync;
 
 		if (!is_glfw_init)
 		{
+			// TODO: Add glfwTerminate();
 			int success = glfwInit();
 			EGE_CORE_ASSERT(success, "Could not initialize GLFW");
 			glfwSetErrorCallback(error_callback);
 			is_glfw_init = true;
 		}
 
-		m_Window = glfwCreateWindow(props.Width, props.Height, props.Title.c_str(), nullptr, nullptr);
+		EGE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+		m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
 		m_Context = new OpenGLGraphicsContext(m_Window);
 		m_Context->init();
-		
-		glfwSetWindowUserPointer(m_Window, &m_Data);
-		setVSync(true);
+
+		setVSync(m_Data.VSync);
 
 		// Setting GLFW callbacks
+		glfwSetWindowUserPointer(m_Window, &m_Data);
+
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 		{
 			WindowsData& data = *(WindowsData*)glfwGetWindowUserPointer(window);

@@ -69,14 +69,14 @@ SandboxLayer::SandboxLayer()
 			}
 		)";
 
-	m_FlatColorShader = Epoch::Shader::create(flatShaderVertexSrc, flatShaderFragmentSrc);
+	m_FlatColorShader = Epoch::Shader::create("FlatColor", flatShaderVertexSrc, flatShaderFragmentSrc);
 
-	m_TextureShader = Epoch::Shader::create("assets/shaders/Texture.glsl");
-
+	auto textureShader = m_ShaderLibrary.load("assets/shaders/Texture.glsl");
+	
 	m_CheckerboardTexture = Epoch::Texture2D::create("assets/textures/Checkerboard.png");
 
-	m_FlatColorShader->bind();
-	std::dynamic_pointer_cast<Epoch::OpenGLShader>(m_FlatColorShader)->uploadUniformInt("u_Texture", 0);
+	textureShader->bind();
+	std::dynamic_pointer_cast<Epoch::OpenGLShader>(textureShader)->uploadUniformInt("u_Texture", 0);
 }
 
 void SandboxLayer::onUpdate(Epoch::Timestep ts)
@@ -103,8 +103,10 @@ void SandboxLayer::onUpdate(Epoch::Timestep ts)
 		}
 	}
 
+	auto textureShader = m_ShaderLibrary.get("Texture");
+
 	m_CheckerboardTexture->bind();
-	Epoch::Renderer::submit(m_TextureShader, m_FlatSquareVAO, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+	Epoch::Renderer::submit(textureShader, m_FlatSquareVAO, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 	Epoch::Renderer::endScene();
 }

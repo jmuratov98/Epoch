@@ -36,8 +36,11 @@ namespace Epoch {
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_LayerStack)
-				layer->onUpdate(timestep);
+			if (!m_IsMinimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->onUpdate(timestep);
+			}
 
 			m_ImGuiLayer->begin();
 			for (Layer* layer : m_LayerStack)
@@ -52,6 +55,7 @@ namespace Epoch {
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.dispatch<WindowClosedEvent>(EGE_BIND_EVENT_FN(Application::onWindowClosed));
+		dispatcher.dispatch<WindowResizedEvent>(EGE_BIND_EVENT_FN(Application::onWindowResized));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -75,6 +79,21 @@ namespace Epoch {
 	{
 		m_IsRunning = false;
 		return true;
+	}
+	
+	bool Application::onWindowResized(WindowResizedEvent& e)
+	{
+		if (e.getWidth() == 0 || e.getHeight() == 0)
+		{
+			m_IsMinimized = true;
+			return false;
+		}
+
+		m_IsMinimized = false;
+
+		Renderer::onWindowResized(e.getWidth(), e.getHeight());	
+
+		return false;
 	}
 
 }

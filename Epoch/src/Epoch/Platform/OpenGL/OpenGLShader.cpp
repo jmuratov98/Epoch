@@ -22,9 +22,16 @@ namespace Epoch {
 		std::string source = readFile(filepath);
 		auto shaderSources = preProcess(source);
 		compile(shaderSources);
+
+		// assets/shaders/Texture.glsl
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind('.');
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filepath.substr(lastSlash, count);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
 		std::unordered_map<unsigned int, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;

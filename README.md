@@ -39,8 +39,7 @@ The plan for EGE is simple using the tutorials from [TheCherno](https://thechern
 ## Changelog ##
 The latest changes:
 
-- Textures
-- Logo
-- CameraController Class
+- Shader Library
+- Window Resizing
 
 Complete list of changes here -> [Changelog](docs/Changelog.md)

@@ -11,9 +11,10 @@ namespace Epoch {
 	{
 		unsigned int Width, Height;
 		std::string Title;
+		bool VSync;
 
-		WindowProperties(unsigned int width = 1280, unsigned int height = 720, const std::string & title = "Epoch Graphics Engine")
-			: Width(width), Height(height), Title(title)
+		WindowProperties(unsigned int width = 1280, unsigned int height = 720, const std::string & title = "Epoch Graphics Engine", bool vsync = true)
+			: Width(width), Height(height), Title(title), VSync(vsync)
 		{ }
 	};
 

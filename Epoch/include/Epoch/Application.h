@@ -31,9 +31,11 @@ namespace Epoch {
 		inline static Application& get() { return *cm_Singleton; }
 	private:
 		bool onWindowClosed(WindowClosedEvent& e);
+		bool onWindowResized(WindowResizedEvent& e);
 
 	private:
 		bool m_IsRunning = true;
+		bool m_IsMinimized = false;
 		float m_LastFrameTime = 0.0f;
 
 		LayerStack m_LayerStack;

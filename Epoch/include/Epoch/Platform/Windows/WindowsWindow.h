@@ -5,6 +5,7 @@
 #include "Epoch/Graphics/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 namespace Epoch {
 	
