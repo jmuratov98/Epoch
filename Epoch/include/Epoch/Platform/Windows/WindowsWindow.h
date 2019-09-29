@@ -27,6 +27,7 @@ namespace Epoch {
 		// Setters
 		virtual void setEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		virtual void setVSync(bool enabled) override;
+		virtual void setWindowMode(const WindowMode& mode) override;
 
 	private: // Private Functions
 		void init(const WindowProperties& props);
@@ -42,8 +43,13 @@ namespace Epoch {
 			unsigned int Width, Height;
 			std::string Title;
 			bool VSync;
+			WindowMode Mode;
 
 			EventCallbackFn EventCallback;
+
+			unsigned int WindowWidth, WindowHeight;
+			glm::ivec2 WindowPosition;
+			bool IsMaximized;
 		} m_Data;
 
 	};

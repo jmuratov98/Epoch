@@ -121,6 +121,15 @@ void SandboxLayer::onImGuiRender()
 	ImGui::Begin("Color");
 	ImGui::ColorEdit3("Square Color", value_ptr(m_SquareColor));
 	ImGui::End();
+
+	ImGui::Begin("Resizing window");
+	if (ImGui::Button("Windowed"))
+		Epoch::Application::get().getWindow().setWindowMode(Epoch::WindowMode::WINDOW);
+	if (ImGui::Button("Borderless"))
+		Epoch::Application::get().getWindow().setWindowMode(Epoch::WindowMode::BORDERLESS);
+	if (ImGui::Button("Fullscreen"))
+		Epoch::Application::get().getWindow().setWindowMode(Epoch::WindowMode::FULL_SCREEN);
+	ImGui::End();
 }
 
 // --------------- Example Game -----------------

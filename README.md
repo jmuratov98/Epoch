@@ -13,6 +13,8 @@ Note: use `--recursive` command in order to clone all of EGE's dependenices
 
 After cloning the repository go to the folders and click `GenEpcohProj.bat` in order to generate visual studio project files
 
+For more information [click here](https://jmuratov98.github.io/epochengine)
+
 ## The Plan ##
 The plan for EGE is simple using the tutorials from [TheCherno](https://thecherno.com/engine), and [Javidx9](https://www.youtube.com/channel/UC-yuWVUplUJZvieEligKBkA) create a simple and fast graphics engine.
 
@@ -39,7 +41,6 @@ The plan for EGE is simple using the tutorials from [TheCherno](https://thechern
 ## Changelog ##
 The latest changes:
 
-- Shader Library
-- Window Resizing
+- Full Screen
 
 Complete list of changes here -> [Changelog](docs/Changelog.md)
