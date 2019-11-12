@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "Epoch/Engine.h"
+#include "Epoch/Core/Engine.h"
 
-#include "Epoch/Core.h"
+#include "Epoch/Core/Core.h"
 
 namespace Epoch {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Epoch/Window.h"
+#include "Epoch/Core/Window.h"
 
 #include "Epoch/Graphics/GraphicsContext.h"
 
@@ -35,7 +35,7 @@ namespace Epoch {
 
 	private: // Private Member Variables
 		GLFWwindow* m_Window;
-		GraphicsContext* m_Context;
+		Scope<GraphicsContext> m_Context;
 
 	private:
 		struct WindowsData

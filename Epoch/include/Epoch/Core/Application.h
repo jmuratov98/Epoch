@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Epoch/Core.h"
+#include "Epoch/Core/Core.h"
 
-#include "Epoch/Window.h"
+#include "Epoch/Core/Window.h"
 
 #include "Epoch/Graphics/Layers/LayerStack.h"
 #include "Epoch/Graphics/Layers/ImGuiLayer.h"

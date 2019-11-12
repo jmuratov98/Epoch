@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Epoch/Application.h"
+#include "Epoch/Core/Application.h"
 #include "Epoch/Graphics/Layers/Layer.h"
 #include "Epoch/Utils/Log.h"
 
 #include "Epoch/Core/Timestep.h"
 
-#include "Epoch/Input.h"
-#include "Epoch/KeyCodes.h"
-#include "Epoch/MouseButtonCodes.h"
+#include "Epoch/Core/Input.h"
+#include "Epoch/Core/KeyCodes.h"
+#include "Epoch/Core/MouseButtonCodes.h"
 
-#include "Epoch/OrthographicCameraController.h"
+#include "Epoch/Graphics/OrthographicCameraController.h"
 
 #include "Epoch/Graphics/Layers/ImGuiLayer.h"
 
@@ -24,8 +24,4 @@
 #include "Epoch/Graphics/VertexArray.h"
 
 #include "Epoch/Graphics/OrthographicCamera.h"
-// ------------------------------------------------------------------------------------------------
-
-// --------------------- Client -------------------------------------------------------------------
-#include "Epoch/Main.h"
 // ------------------------------------------------------------------------------------------------

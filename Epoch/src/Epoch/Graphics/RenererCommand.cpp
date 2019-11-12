@@ -5,6 +5,6 @@
 
 namespace Epoch {
 
-	RendererAPI* RendererCommand::cm_RendererAPI = new OpenGLRendererAPI;
+	Scope<RendererAPI> RendererCommand::cm_RendererAPI = create_scope<OpenGLRendererAPI>();
 
 }

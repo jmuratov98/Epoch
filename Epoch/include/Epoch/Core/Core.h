@@ -2,6 +2,37 @@
 
 #include <memory>
 
+// Platform Detection
+
+#ifdef _WIN32
+	#ifdef _WIN64
+		#define EGE_PLATFORM_WINDOWS
+	#else
+		#error "x86 Builds are not supported"
+	#endif
+#elif defined(__APPLE__) || defined(__MACH__)
+	#include <TargetConditionals.h>
+	#if TARGET_IPHONE_SIMULATOR == 1
+		#error IOS Simulator is not supported
+	#elif TARGET_OS_IPHONE == 1
+		#define EGE_PLATFORM_IOS
+		#error "IOS is not supported"
+	#elif TARGET_OS_MAC == 1
+		#define EGE_PLATFORM_MAC
+		#error "Mac OS is not supported"
+	#else
+		#error "Unknown Apple OS"
+	#endif
+#elif defined(__ANDROID__)
+		#define EGE_PLATFORM_ANDROID
+		#error "Android is not supported"
+#elif defined(__linux__)
+	#define EGE_PLATFORM_LINUX
+	#error "Linux is not supported"
+#else
+		#error "Unknown Platform"
+#endif
+
 #if defined(EGE_PLATFORM_WINDOWS) && defined(EGE_DYNAMIC_LINKING)
 	#ifdef EGE_DLL
 		#define EGE_API __declspec(dllexport)
@@ -36,8 +67,17 @@ namespace Epoch {
 
 	template<typename T>
 	using Ref = std::shared_ptr<T>;
+	template<typename T, typename... Args>
+	constexpr Ref<T> create_ref(Args&& ... args)
+	{
+		return std::make_shared<T>(std::forward<Args>(args)...);
+	}
 
 	template<typename T>
 	using Scope = std::unique_ptr<T>;
-
+	template<typename T, typename... Args>
+	constexpr Scope<T> create_scope(Args&& ... args)
+	{
+		return std::make_unique<T>(std::forward<Args>(args)...);
+	}
 }

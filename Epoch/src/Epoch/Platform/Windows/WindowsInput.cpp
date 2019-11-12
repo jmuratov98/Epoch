@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "Epoch/Platform/Windows/WindowsInput.h"
 
-#include "Epoch/Application.h"
+#include "Epoch/Core/Application.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace Epoch {
 
-	Input* Input::cm_Singleton = new WindowsInput();
+	Scope<Input> Input::cm_Singleton = create_scope<WindowsInput>();
 
 	bool WindowsInput::isKeyPressedImpl(int keycode)
 	{

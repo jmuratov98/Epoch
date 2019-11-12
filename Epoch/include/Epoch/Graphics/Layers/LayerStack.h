@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Epoch/Core.h"
+#include "Epoch/Core/Core.h"
 #include "Epoch/Graphics/Layers/Layer.h"
 
 namespace Epoch {

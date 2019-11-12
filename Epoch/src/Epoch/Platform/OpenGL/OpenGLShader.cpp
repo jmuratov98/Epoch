@@ -23,7 +23,6 @@ namespace Epoch {
 		auto shaderSources = preProcess(source);
 		compile(shaderSources);
 
-		// assets/shaders/Texture.glsl
 		auto lastSlash = filepath.find_last_of("/\\");
 		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
 		auto lastDot = filepath.rfind('.');
@@ -81,8 +80,10 @@ namespace Epoch {
 			EGE_CORE_ASSERT(shader_type_from_string(type), "Invalid shader type specified");
 
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
+			EGE_CORE_ASSERT(nextLinePos != std::string::npos, "Syntax error");
 			pos = source.find(typeToken, nextLinePos);
-			shaderSources[shader_type_from_string(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
+
+			shaderSources[shader_type_from_string(type)] = (pos == std::string::npos) ? source.substr(nextLinePos) : source.substr(nextLinePos, pos - nextLinePos);
 		}
 
 		return shaderSources;
@@ -122,7 +123,7 @@ namespace Epoch {
 				glDeleteShader(shader);
 
 				EGE_CORE_ERROR("{0}", infoLog.data());
-				EGE_CORE_ASSERT(false, "{0} Shader compilation failed");
+				EGE_CORE_ASSERT(false, "Shader compilation failed");
 				break;
 			}
 			
@@ -154,8 +155,10 @@ namespace Epoch {
 			return;
 		} 
 
-		for (auto id : shaderIDs)
+		for (auto id : shaderIDs) {
 			glDetachShader(program, id);
+			glDeleteShader(id);
+		}
 
 	}
 

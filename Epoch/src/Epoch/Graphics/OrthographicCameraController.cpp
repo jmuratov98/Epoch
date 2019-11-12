@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "Epoch/OrthographicCameraController.h"
+#include "Epoch/Graphics/OrthographicCameraController.h"
 
-#include "Epoch/Input.h"
-#include "Epoch/KeyCodes.h"
+#include "Epoch/Core/Input.h"
+#include "Epoch/Core/KeyCodes.h"
 
 namespace Epoch {
 
@@ -14,14 +14,26 @@ namespace Epoch {
 	void OrthographicCameraController::onUpdate(Timestep ts)
 	{
 		if (Input::isKeyPressed(EGE_KEY_A))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+		{
+			m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+			m_CameraPosition.y -= sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+		}
 		else if (Input::isKeyPressed(EGE_KEY_D))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
+		{
+			m_CameraPosition.x += cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+			m_CameraPosition.y += sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+		}
 
 		if (Input::isKeyPressed(EGE_KEY_W))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+		{
+			m_CameraPosition.x += -sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+			m_CameraPosition.y += cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+		}
 		else if (Input::isKeyPressed(EGE_KEY_S))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+		{
+			m_CameraPosition.x -= -sin(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+			m_CameraPosition.y -= cos(glm::radians(m_CameraRotation)) * m_CameraMoveSpeed * ts;
+		}
 
 		if (m_IsRotation)
 		{
@@ -29,6 +41,11 @@ namespace Epoch {
 				m_CameraRotation += m_CameraRotationSpeed * ts;
 			if (Input::isKeyPressed(EGE_KEY_E))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
+
+			if (m_CameraRotation > 180.0f)
+				m_CameraRotation -= 360.0f;
+			else if (m_CameraRotation <= -180.0f)
+				m_CameraRotation += 360.0f;
 
 			m_Camera.setRotation(m_CameraRotation);
 		}

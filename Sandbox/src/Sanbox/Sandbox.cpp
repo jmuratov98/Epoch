@@ -1,11 +1,14 @@
 #include "Sandbox/Sandbox.h"
 
-#include "Epoch/Platform/OpenGL/OpenGLShader.h"
+#include <Epoch/Core/Main.h>
+#include <Epoch/Platform/OpenGL/OpenGLShader.h>
 
 #include <imgui.h>
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox/Sandbox2D.h"
 
 // --------------- Example Layer -----------------
 
@@ -13,7 +16,7 @@ SandboxLayer::SandboxLayer()
 	: Layer("SandboxLayer"), m_CameraController(16.0f / 9.0f)
 {
 	// Blue Square VAO
-	m_FlatSquareVAO.reset(Epoch::VertexArray::create());
+	m_FlatSquareVAO = Epoch::VertexArray::create();
 
 	float square_vertices[5 * 4] = {
 		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -136,7 +139,8 @@ void SandboxLayer::onImGuiRender()
 
 Sandbox::Sandbox()
 {
-	pushLayer(new SandboxLayer());
+	//pushLayer(new SandboxLayer());
+	pushLayer(new Sandbox2D());
 }
 
 Sandbox::~Sandbox()

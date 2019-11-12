@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Epoch/Core.h"
+#include "Epoch/Core/Core.h"
 
 namespace Epoch {
 
@@ -28,7 +28,7 @@ namespace Epoch {
 		virtual float getYImpl() = 0;
 
 	private:
-		static Input* cm_Singleton;
+		static Scope<Input> cm_Singleton;
 	};
 
 }

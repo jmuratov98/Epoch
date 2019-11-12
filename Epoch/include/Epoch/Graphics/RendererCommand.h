@@ -16,7 +16,7 @@ namespace Epoch {
 		inline static void drawIndexed(const std::shared_ptr<VertexArray>& vertexArray) { cm_RendererAPI->drawIndexed(vertexArray); }
 
 	private:
-		static RendererAPI* cm_RendererAPI;
+		static Scope<RendererAPI> cm_RendererAPI;
 	};
 
 }

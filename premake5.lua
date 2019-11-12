@@ -75,8 +75,8 @@ project "Epoch"
 
 		defines
 		{
-			"EGE_PLATFORM_WINDOWS",
-			"EGE_DLL"
+			"EGE_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
@@ -128,11 +128,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"EGE_PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "EGE_DEBUG"

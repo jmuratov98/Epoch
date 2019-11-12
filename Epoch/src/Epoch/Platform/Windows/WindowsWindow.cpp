@@ -81,7 +81,7 @@ namespace Epoch {
 		else if (m_Data.Mode == WindowMode::BORDERLESS)
 			glfwMaximizeWindow(m_Window);
 
-		m_Context = new OpenGLGraphicsContext(m_Window);
+		m_Context = create_scope<OpenGLGraphicsContext>(m_Window);
 		m_Context->init();
 
 		setVSync(m_Data.VSync);

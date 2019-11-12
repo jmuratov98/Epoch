@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "Epoch/Application.h"
+#include "Epoch/Core/Application.h"
 
 #include "Epoch/Graphics/Renderer.h"
 
-#include "Epoch/Engine.h"
+#include "Epoch/Core/Engine.h"
 
 // Temporary
 #include <GLFW/glfw3.h>

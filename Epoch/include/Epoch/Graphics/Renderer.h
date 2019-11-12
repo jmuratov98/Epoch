@@ -26,7 +26,7 @@ namespace Epoch {
 			glm::mat4 ViewProjectionMatrix;
 		};
 
-		static SceneData* cm_SceneData;
+		static Scope<SceneData> cm_SceneData;
 	};
 
 

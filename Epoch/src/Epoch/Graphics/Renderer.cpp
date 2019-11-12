@@ -5,7 +5,7 @@
 
 namespace Epoch {
 
-	Renderer::SceneData* Renderer::cm_SceneData = new Renderer::SceneData;
+	Scope<Renderer::SceneData> Renderer::cm_SceneData = create_scope<Renderer::SceneData>();
 
 	void Renderer::init()
 	{

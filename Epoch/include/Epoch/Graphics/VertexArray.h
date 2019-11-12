@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Epoch/Core.h"
+#include "Epoch/Core/Core.h"
 #include "Epoch/Graphics/Buffer.h"
 
 namespace Epoch {
@@ -19,7 +19,7 @@ namespace Epoch {
 		virtual const std::vector<Ref<VertexBuffer>>& getVertexBuffers() const = 0;
 		virtual const Ref<IndexBuffer>& getIndexBuffer() const = 0;
 
-		static VertexArray* create();
+		static Ref<VertexArray> create();
 	};
 
 }
